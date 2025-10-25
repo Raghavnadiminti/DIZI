@@ -5,6 +5,39 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 
 
+// 
+// Character Component Documentation
+// 
+
+/**
+ * Component Purpose:
+ * This component displays detailed information about a selected character
+ * on the `/character/:id` route. The data is fetched from an external API.
+ *
+ * Functions:
+ * 
+ * ngOnInit:
+ *   Angular lifecycle hook used to load character data when the component is initialized.
+ *
+ * loadCharacterDetails:
+ *   Fetches character details from the API based on the character ID.
+ *
+ * getDisplayValue:
+ *   Formats and structures string values to make them suitable for display.
+ *
+ * goBack:
+ *   Navigates the user back to the previous page.
+ *
+ * retry:
+ *   Retries fetching the data in case of a failed API request during initialization.
+ */
+
+
+
+
+
+
+
 
 
 interface Character {

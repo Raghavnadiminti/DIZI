@@ -7,6 +7,41 @@ import { catchError, map } from 'rxjs/operators';
 
 
 
+// 
+// House Details Component Documentation
+// 
+
+/**
+ * Component Purpose:
+ * This component displays detailed information about a specific house fetched from the API.
+ *
+ * Functions:
+ *
+ * ngOnInit:
+ *   Angular lifecycle hook used to load house details when the component is initialized.
+ *
+ * loadHouseDetails:
+ *   Fetches detailed information about the house from the API.
+ *
+ * loadCharacters:
+ *   The API returns character URLs; this function fetches detailed character information for display.
+ *
+ * forkJoin:
+ *   Imported from RxJS, it allows multiple character data requests to be fetched in parallel.
+ *
+ * getCharacterId:
+ *   Extracts the character ID from its URL, which is later used to fetch individual character details.
+ *
+ * goBack:
+ *   Navigates the user back to the previous page.
+ *
+ * getDisplayValue:
+ *   Formats and structures API response data for better display readability.
+ *
+ * retry:
+ *   Retries fetching house details if the initial API request fails.
+ */
+
 // House Interface based on API documentation
 interface House {
   url: string;

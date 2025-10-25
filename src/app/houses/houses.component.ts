@@ -5,6 +5,37 @@ import { Router } from '@angular/router';
 
 
 
+// 
+// Houses Component Documentation
+// 
+
+/**
+ * Component Purpose:
+ * This component renders a list of all houses fetched from the API.
+ *
+ * Functions:
+ *
+ * ngOnInit:
+ *   Angular lifecycle hook used to load house data when the component is initialized.
+ *
+ * loadHouses:
+ *   Fetches the list of houses from the API.
+ *
+ * getHouseId:
+ *   Extracts the unique ID of a house from its API URL, which is later used to fetch
+ *   house-specific details.
+ *
+ * navigateToHouse:
+ *   Navigates to the `/houses/:id` route to display detailed information about a specific house.
+ *
+ * getDisplaySeats:
+ *   Processes the API response to present seat information in a readable format.
+ *
+ * getDisplayWords:
+ *   Formats and structures motto or words data from the API for easier display.
+ */
+
+
 // House Interface based on API documentation
 interface House {
   url: string;
