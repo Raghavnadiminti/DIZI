@@ -9,7 +9,7 @@ https://anapioficeandfire.com  fetched all the data from this api
 
 Styles:- 
 All global styles and templates where defined at src/styles.css 
-every component styles were defined at its particular .componet.css file 
+every component styles were defined at its particular .component.css file 
 
 
 Components used:- 
@@ -24,9 +24,16 @@ Components used:-
 - HouseDetailComponent:- This component displays detailed information about a specific house fetched from the API.
   Located at:- src/app/singlehouse
 
+Working:- 
+Initially houses component rendered on first page from there omclicking on particular house card it rediects to /houses/:id where 
+that particular house details rendered using HouseDetailComponent there sworn members where displayed cliking on each character it 
+rediects to /character/:id where character specific details displayed 
 
 Routes
 all routes configured at src/app/app.routes.ts
 - /houses - View all houses
 - /house/:id - View house details
-- /character/:id - View character details
+- /character/:id - View character details 
+
+Issuepresent:- 
+external api not sending response consistently so you can see some feilds missing while displaying each component details however i  handled them effectively
