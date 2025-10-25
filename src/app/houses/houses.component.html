@@ -1,0 +1,47 @@
+<div class="houses-container">
+  <div class="houses-header">
+    <h1 class="houses-title">
+      <span class="icon"></span>
+      Game Of Thrones
+      <span class="subtitle">Explore the Great Houses</span>
+    </h1>
+  </div>
+
+  <!-- Loading state -->
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Gathering the houses...</p>
+      </div>
+    </div>
+  }
+
+  <!-- Error state -->
+  @if (error) {
+    <div class="error-container">
+      <div class="error-message">
+        <span class="error-icon"></span>
+        <p>{{ error }}</p>
+        <button class="retry-btn" (click)="loadHouses()">Try Again</button>
+      </div>
+    </div>
+  }
+
+  <!-- Houses grid -->
+  @if (!isLoading && !error) {
+    <div class="houses-grid">
+      @for (house of houses; track house.url) {
+        <div 
+          class="house-card" 
+          (click)="navigateToHouse(house)"
+          [attr.data-house-id]="getHouseId(house.url)"
+        >
+          <div class="house-card-inner">
+            <div class="house-name">{{ house.name || 'Unknown House' }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
