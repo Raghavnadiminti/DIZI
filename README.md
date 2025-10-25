@@ -35,6 +35,8 @@ DIZITASK/
 │   ├── main.ts
 │   └── styles.css
 ├── angular.json
+|__ documentation.txt                      #documentation
+|
 ├── package.json
 ├── tsconfig.json
 └── README.md
