@@ -1,0 +1,128 @@
+<div class="character-detail-container">
+  <!-- Loading State -->
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading Character Details...</p>
+      </div>
+    </div>
+  }
+
+  <!-- Error State -->
+  @else if (error) {
+    <div class="error-container">
+      <div class="error-message">
+        <span class="error-icon"></span>
+        <p>{{ error }}</p>
+        <button class="retry-btn" (click)="retry()">Try Again</button>
+        <button class="back-btn" (click)="goBack()">Go Back</button>
+      </div>
+    </div>
+  }
+
+  <!-- Character Details -->
+  @else if (character) {
+    <div class="character-detail-content">
+      <div class="detail-header">
+        <button class="back-button" (click)="goBack()">
+          <span class="arrow-left">←</span> Go Back
+        </button>
+        
+        <h1 class="character-title">
+          {{ character.name || 'Unknown Character' }}
+        </h1>
+        
+        @if (character.culture) {
+          <p class="character-subtitle">{{ character.culture }}</p>
+        }
+      </div>
+
+      <div class="info-card">
+        <div class="info-grid">
+          <!-- Aliases -->
+          @if (character.aliases && character.aliases.length > 0 && character.aliases[0]) {
+            <div class="info-item aliases-item">
+              <h3 class="info-label">Also Known As</h3>
+              <ul class="info-list">
+                @for (alias of character.aliases; track alias) {
+                  @if (alias) {
+                    <li>{{ alias }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- Gender -->
+          @if (character.gender) {
+            <div class="info-item">
+              <h3 class="info-label">Gender</h3>
+              <p class="info-value">{{ character.gender }}</p>
+            </div>
+          }
+
+          <!-- Culture -->
+          @if (character.culture) {
+            <div class="info-item">
+              <h3 class="info-label">Culture</h3>
+              <p class="info-value">{{ character.culture }}</p>
+            </div>
+          }
+
+          <!-- Born -->
+          @if (character.born) {
+            <div class="info-item">
+              <h3 class="info-label">Born</h3>
+              <p class="info-value">{{ character.born }}</p>
+            </div>
+          }
+
+          <!-- Died -->
+          @if (character.died) {
+            <div class="info-item">
+              <h3 class="info-label">Died</h3>
+              <p class="info-value">{{ character.died }}</p>
+            </div>
+          }
+
+          <!-- Titles -->
+          @if (character.titles && character.titles.length > 0 && character.titles[0]) {
+            <div class="info-item">
+              <h3 class="info-label">Titles</h3>
+              <ul class="info-list">
+                @for (title of character.titles; track title) {
+                  @if (title) {
+                    <li>{{ title }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- TV Series -->
+          @if (character.tvSeries && character.tvSeries.length > 0 && character.tvSeries[0]) {
+            <div class="info-item">
+              <h3 class="info-label">TV Series</h3>
+              <ul class="info-list">
+                @for (season of character.tvSeries; track season) {
+                  @if (season) {
+                    <li>{{ season }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- Played By -->
+          @if (character.playedBy && character.playedBy.length > 0 && character.playedBy[0]) {
+            <div class="info-item">
+              <h3 class="info-label">Played By</h3>
+              <p class="info-value">{{ character.playedBy.join(', ') }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>
