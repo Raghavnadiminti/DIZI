@@ -1,0 +1,181 @@
+<div class="house-detail-container">
+  <!-- Loading State -->
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading House Details...</p>
+      </div>
+    </div>
+  }
+
+  <!-- Error State -->
+  @else if (error) {
+    <div class="error-container">
+      <div class="error-message">
+        <span class="error-icon">⚠️</span>
+        <p>{{ error }}</p>
+        <button class="retry-btn" (click)="retry()">Try Again</button>
+        <button class="back-btn" (click)="goBack()">Back to Houses</button>
+      </div>
+    </div>
+  }
+
+  <!-- House Details -->
+  @else if (house) {
+    <div class="house-detail-content">
+      <!-- Header with Back Button -->
+      <div class="detail-header">
+        <button class="back-button" (click)="goBack()">
+          <span class="arrow-left">←</span> Back to Houses
+        </button>
+        <h1 class="house-title">{{ house.name }}</h1>
+        @if (house.region) {
+          <p class="house-subtitle">{{ house.region }}</p>
+        }
+      </div>
+
+      <!-- House Information Card -->
+      <div class="info-card">
+        <div class="info-grid">
+          <!-- Words -->
+          @if (house.words) {
+            <div class="info-item words-item">
+              <h3 class="info-label">House Words</h3>
+              <p class="info-value words">"{{ house.words }}"</p>
+            </div>
+          }
+
+          <!-- Coat of Arms -->
+          @if (house.coatOfArms) {
+            <div class="info-item">
+              <h3 class="info-label">Coat of Arms</h3>
+              <p class="info-value">{{ house.coatOfArms }}</p>
+            </div>
+          }
+
+          <!-- Region -->
+          @if (house.region) {
+            <div class="info-item">
+              <h3 class="info-label">Region</h3>
+              <p class="info-value">{{ house.region }}</p>
+            </div>
+          }
+
+          <!-- Founded -->
+          @if (house.founded) {
+            <div class="info-item">
+              <h3 class="info-label">Founded</h3>
+              <p class="info-value">{{ house.founded }}</p>
+            </div>
+          }
+
+          <!-- Died Out -->
+          @if (house.diedOut) {
+            <div class="info-item">
+              <h3 class="info-label">Died Out</h3>
+              <p class="info-value">{{ house.diedOut }}</p>
+            </div>
+          }
+
+          <!-- Titles -->
+          @if (house.titles && house.titles.length > 0 && house.titles[0]) {
+            <div class="info-item">
+              <h3 class="info-label">Titles</h3>
+              <ul class="info-list">
+                @for (title of house.titles; track title) {
+                  @if (title) {
+                    <li>{{ title }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- Seats -->
+          @if (house.seats && house.seats.length > 0 && house.seats[0]) {
+            <div class="info-item">
+              <h3 class="info-label">Seats</h3>
+              <ul class="info-list">
+                @for (seat of house.seats; track seat) {
+                  @if (seat) {
+                    <li>{{ seat }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- Ancestral Weapons -->
+          @if (house.ancestralWeapons && house.ancestralWeapons.length > 0 && house.ancestralWeapons[0]) {
+            <div class="info-item">
+              <h3 class="info-label">Ancestral Weapons</h3>
+              <ul class="info-list">
+                @for (weapon of house.ancestralWeapons; track weapon) {
+                  @if (weapon) {
+                    <li>{{ weapon }}</li>
+                  }
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Sworn Members (Characters) Section -->
+      @if (characters.length > 0) {
+        <div class="sworn-members-section">
+          <h2 class="section-title">
+            <span class="title-icon">⚔️</span>
+            Sworn Members ({{ characters.length }})
+          </h2>
+          
+          <div class="characters-grid">
+            @for (character of characters; track character.url) {
+              <button 
+                class="character-card" 
+                (click)="navigateToCharacter(character)"
+                [attr.aria-label]="'View details for ' + (character.name || 'Unknown Character')">
+                <div class="character-card-content">
+                  <h3 class="character-name">
+                    {{ character.name || 'Unknown Character' }}
+                  </h3>
+                  
+                  @if (character.aliases && character.aliases.length > 0 && character.aliases[0]) {
+                    <p class="character-alias">
+                      aka: {{ character.aliases[0] }}
+                    </p>
+                  }
+
+                  <div class="character-details">
+                    @if (character.culture) {
+                      <span class="detail-badge">{{ character.culture }}</span>
+                    }
+                    @if (character.gender) {
+                      <span class="detail-badge">{{ character.gender }}</span>
+                    }
+                  </div>
+
+                  @if (character.titles && character.titles.length > 0 && character.titles[0]) {
+                    <p class="character-title">{{ character.titles[0] }}</p>
+                  }
+                </div>
+                
+                <div class="character-arrow">
+                  <span>→</span>
+                </div>
+              </button>
+            }
+          </div>
+        </div>
+      } @else if (!isLoading) {
+        <div class="no-members-section">
+          <p class="no-members-text">
+            <span class="icon">👥</span>
+            No sworn members recorded for this house
+          </p>
+        </div>
+      }
+    </div>
+  }
+</div>
