@@ -1,59 +1,70 @@
-# Dizitask
+# Game of Thrones Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.18.
+## Summary
+A simple Angular 17+ web application that displays Game of Thrones houses and character data using the [An API of Ice and Fire](https://anapioficeandfire.com). Built with TypeScript and modern Angular standalone components.
 
-## Development server
+## hosted link 
+-https://dizi-three.vercel.app/ 
 
-To start a local development server, run:
 
-```bash
-ng serve
+## Folder Structure
+
+```
+DIZITASK/
+├── src/
+│   ├── app/
+│   │  
+│   │   ├── character/                      # Character detail component
+│   │   │   ├── character-detail.component.ts
+│   │   │   ├── character-detail.component.html
+│   │   │   └── character-detail.component.css
+│   │   ├── houses/                         # Houses list component
+│   │   │   ├── houses.component.ts
+│   │   │   ├── houses.component.html
+│   │   │   └── houses.component.css
+│   │   ├── singlehouse/                    # House detail component
+│   │   │   ├── house-detail.component.ts
+│   │   │   ├── house-detail.component.html
+│   │   │   └── house-detail.component.css
+│   │   ├── app.component.ts                # Root component
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.config.ts                   # App configuration
+│   │   └── app.routes.ts                   # Routing configuration
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.css
+├── angular.json
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## How to Run
 
-## Code scaffolding
+### Prerequisites
+- Node.js 18+
+- npm 9+
+- Angular CLI 17+
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Steps to run application
+- git clone https://github.com/Raghavnadiminti/DIZI
+- cd DIZITASK
+- npm i
+- npm start
+- open  http://localhost:4200 in browser
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
 
-## Building
+## Routes
+- `/houses` - View all houses
+- `/house/:id` - View house details
+- `/character/:id` - View character details
 
-To build the project run:
+## Tech Stack
+- Angular 17+ (Standalone Components)
+- TypeScript 5+
+- RxJS
+- An API of Ice and Fire (REST API)
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
