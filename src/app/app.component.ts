@@ -4,8 +4,9 @@ import {HousesComponent} from'./houses/houses.component'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: '<div>,app-houses></app-houses></div>',
+  standalone:true,
+  imports: [RouterOutlet,HousesComponent],
+  template: '<div><app-houses></app-houses></div>',
   styleUrl: './app.component.css'
 })
 export class AppComponent {

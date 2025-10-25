@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap');
+
+.houses-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0d0f14 100%);
+  padding: 2rem 1rem;
+  font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header Styles */
+.houses-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.houses-title {
+  font-family: 'Fira Code', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00d4ff 0%, #0db7ed 50%, #00a8cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  text-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.houses-title .icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.3));
+}
+
+.houses-title .subtitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.9), rgba(13, 183, 237, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Loading Styles */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.loading-spinner {
+  text-align: center;
+  color: #0db7ed;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(13, 183, 237, 0.2);
+  border-top: 4px solid #0db7ed;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #00d4ff;
+  letter-spacing: 0.5px;
+}
+
+/* Error Styles */
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.error-message {
+  background: linear-gradient(135deg, rgba(15, 20, 25, 0.98), rgba(26, 35, 50, 0.98));
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+  border: 1.5px solid rgba(0, 212, 255, 0.4);
+}
+
+.error-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: #00d4ff;
+  filter: drop-shadow(0 2px 4px rgba(0, 212, 255, 0.2));
+}
+
+.error-message p {
+  background: linear-gradient(90deg, #00d4ff, #0db7ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #0db7ed, #00a8cc);
+  color: #0f1419;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-family: 'Sora', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.35);
+  background: linear-gradient(135deg, #00d4ff, #0db7ed);
+}
+
+/* Houses Grid */
+.houses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .houses-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .houses-title {
+    font-size: 2.5rem;
+  }
+
+  .houses-container {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .houses-grid {
+    max-width: 1400px;
+  }
+}
+
+/* House Card Styles */
+.house-card {
+  background: linear-gradient(135deg, rgba(15, 20, 25, 0.95), rgba(26, 35, 50, 0.95));
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(0, 212, 255, 0.25);
+  position: relative;
+}
+
+.house-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #0db7ed, #00a8cc);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.house-card:hover::before {
+  opacity: 1;
+}
+
+.house-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+}
+
+.house-card-inner {
+  padding: 3rem 2rem;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* House Header */
+.house-header {
+  margin-bottom: 1.5rem;
+}
+
+.house-name {
+  font-family: 'Fira Code', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #00d4ff, #0db7ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.house-region {
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8), rgba(13, 183, 237, 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* House Content */
+.house-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/*
+.house-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0db7ed;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: #b8d4e3;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.info-value.words {
+  font-style: italic;
+  color: #4db8e8;
+  font-weight: 500;
+}
+
+.info-value.lord {
+  font-weight: 600;
+  color: #0db7ed;
+} */
+
+/* House Footer */
+.house-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+}
+
+.view-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00d4ff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  font-family: 'Sora', sans-serif;
+}
+
+.house-card:hover .view-details {
+  color: #0db7ed;
+}
+
+.view-details .arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: #00d4ff;
+}
+
+.house-card:hover .view-details .arrow {
+  transform: translateX(4px);
+  color: #0db7ed;
+}
+
+/* Enhanced Animations */
+.house-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.house-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+.house-card:focus {
+  outline: 3px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.house-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Active state */
+.house-card:active {
+  transform: translateY(-4px) scale(0.98);
+}
