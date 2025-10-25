@@ -1,0 +1,32 @@
+Prerequisites
+- Node.js 18+
+- npm 9+
+- Angular CLI 17+
+
+External apis Used:- 
+https://anapioficeandfire.com  fetched all the data from this api 
+
+
+Styles:- 
+All global styles and templates where defined at src/styles.css 
+every component styles were defined at its particular .componet.css file 
+
+
+Components used:- 
+- CharacterDetailComponent :- This component displays detailed information about a selected character
+ * on the `/character/:id` route. The data is fetched from an external API 
+ Located at :- src/app/character
+
+
+- HousesComponents:- This component renders a list of all houses fetched from the API. 
+  Located at:- src/app/houses 
+
+- HouseDetailComponent:- This component displays detailed information about a specific house fetched from the API.
+  Located at:- src/app/singlehouse
+
+
+Routes
+all routes configured at src/app/app.routes.ts
+- /houses - View all houses
+- /house/:id - View house details
+- /character/:id - View character details
